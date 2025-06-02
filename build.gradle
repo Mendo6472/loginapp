@@ -1,0 +1,46 @@
+plugins {
+    id 'org.springframework.boot' version '3.0.13'
+    id 'io.spring.dependency-management' version '1.1.4'
+    id 'java'
+    id 'war'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+// Configurar nombre del archivo WAR
+war {
+    archiveBaseName = 'loginapp'
+    archiveVersion = ''
+    archiveClassifier = ''
+}
+
+// Deshabilitar el bootWar task para evitar conflictos
+bootWar {
+    enabled = false
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.postgresql:postgresql'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    
+    // Tomcat provided dependency for WAR deployment
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
+
+test {
+    useJUnitPlatform()
+} 
