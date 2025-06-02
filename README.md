@@ -1,5 +1,11 @@
 # Login App - Sistema de Gestión de Usuarios
 
+## Integrantes
+
+Julian Andres Mendoza Castro
+
+Juan Sebastian Diaz Sanchez
+
 ## Descripción
 
 Sistema de gestión de usuarios desarrollado en Spring Boot con autenticación segura usando PBKDF2 para hash de contraseñas.
