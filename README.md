@@ -164,4 +164,17 @@ Gradle version X is required. Current version is Y
 
 ---
 
+## 📋 Informe Técnico
+
+Para información detallada sobre el desarrollo, implementación, dificultades encontradas y conclusiones del proyecto, consulta el **[Informe Técnico Completo](INFORME_TECNICO.md)**.
+
+El informe incluye:
+- Metodología de desarrollo y arquitectura implementada
+- Análisis detallado de la implementación de seguridad PBKDF2
+- Documentación de dificultades técnicas y vulnerabilidades identificadas
+- Propuestas de mejora y recomendaciones futuras
+- Conclusiones y lecciones aprendidas
+
+---
+
 **Nota**: Este es un proyecto educativo que demuestra la implementación de seguridad con PBKDF2 en Spring Boot. Para uso en producción, considera implementaciones adicionales de seguridad según tus necesidades específicas. 
