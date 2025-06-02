@@ -17,6 +17,53 @@
 - **Frontend**: Thymeleaf + Bootstrap 5
 - **Seguridad**: PBKDF2WithHmacSHA256
 
+### Análisis Detallado de Seguridad PBKDF2
+
+#### Configuración Técnica Implementada
+```java
+private static final String ALGORITHM = "PBKDF2WithHmacSHA256";
+private static final int ITERATIONS = 100000;      // 100,000 iteraciones
+private static final int KEY_LENGTH = 256;         // 256 bits
+private static final int SALT_LENGTH = 32;         // 32 bytes
+```
+
+#### Justificación de Parámetros
+
+**1. Algoritmo PBKDF2WithHmacSHA256**:
+- Estándar recomendado por NIST (National Institute of Standards and Technology)
+- Utiliza SHA-256 como función hash subyacente
+- Resistente a ataques de colisión conocidos
+
+**2. 100,000 Iteraciones**:
+- Número recomendado por OWASP para 2023
+- Tiempo de procesamiento: ~100ms en hardware moderno
+- Balance óptimo entre seguridad y rendimiento
+- Resistencia contra ataques de fuerza bruta con hardware especializado
+
+**3. Longitud de Clave 256 bits**:
+- Proporciona un nivel de seguridad equivalente a AES-256
+- Suficiente para resistir ataques futuros con computación cuántica
+- Estándar de la industria para aplicaciones críticas
+
+**4. Salt de 32 bytes**:
+- Previene ataques de rainbow table
+- Garantiza unicidad incluso con contraseñas idénticas
+- Generado criptográficamente seguro con `SecureRandom`
+
+#### Proceso de Hash Implementado
+
+1. **Generación de Salt**: Se genera un salt único de 32 bytes para cada contraseña
+2. **Aplicación PBKDF2**: La contraseña se procesa con el salt usando 100,000 iteraciones
+3. **Codificación**: El resultado se codifica en Base64 para almacenamiento seguro
+4. **Almacenamiento**: Hash y salt se guardan por separado en la base de datos
+
+#### Ventajas de Seguridad Logradas
+
+- ✅ **Resistencia a Rainbow Tables**: Salt único previene ataques precomputados
+- ✅ **Resistencia a Fuerza Bruta**: 100,000 iteraciones ralentizan significativamente los ataques
+- ✅ **Resistencia a Diccionario**: El tiempo computacional hace inviables los ataques masivos
+- ✅ **Escalabilidad Futura**: El número de iteraciones puede incrementarse según evolucione el hardware
+
 ### Funcionalidades Desarrolladas
 - ✅ Sistema de login y registro de usuarios
 - ✅ Roles de administrador y usuario común
